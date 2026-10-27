@@ -1,0 +1,50 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/ UI.xsd">
+    <Frame name="CombatStatusDriver" parent="UIParent" hidden="false" enableMouse="false">
+        <Size>
+            <AbsDimension x="1" y="1"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPLEFT"/>
+        </Anchors>
+        <Scripts>
+            <OnLoad>CombatStatus.OnLoad(this)</OnLoad>
+            <OnEvent>CombatStatus.OnEvent(this, event)</OnEvent>
+            <OnUpdate>CombatStatus.OnUpdate(elapsedTime)</OnUpdate>
+        </Scripts>
+    </Frame>
+    <Frame name="CombatStatusFrame" parent="UIParent" enableMouse="true">
+        <Size>
+            <AbsDimension x="200" y="50"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+                <Offset>
+                    <AbsDimension x="0" y="180"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parent_Text" inherits="GameFontNormal" justifyH="CENTER" text="SPOKOJ">
+                    <Size>
+                        <AbsDimension x="200" y="46"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="CENTER"/>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="32"/>
+                    </FontHeight>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad> this:RegisterForDrag("LeftButton") </OnLoad>
+            <OnEnter> GameTooltip:SetOwner(this, "ANCHOR_TOP") GameTooltip:SetText("Combat Status") GameTooltip:AddLine("Left-click: hide this text", 0.8, 0.8, 0.8) GameTooltip:AddLine("Shift + left-click: move the text", 0.8, 0.8, 0.8) GameTooltip:AddLine("Type /combatstatus show to bring it back", 0.8, 0.8, 0.8) GameTooltip:Show() </OnEnter>
+            <OnClick> CombatStatus.OnClick(this, key) </OnClick>
+            <OnLeave> GameTooltip:Hide() </OnLeave>
+            <OnDragStart> CombatStatus.OnDragStart(this) </OnDragStart>
+            <OnDragStop> CombatStatus.OnDragStop(this) </OnDragStop>
+        </Scripts>
+    </Frame>
+</Ui>

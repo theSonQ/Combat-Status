@@ -1,0 +1,7 @@
+## Title: Combat Status
+## Version: 1.9
+## Notes: Combat state text, left-click hides, Shift drag moves, remembers hidden state
+## Author: theSonQ
+## SavedVariablesPerCharacter: CombatStatusSet
+CombatStatus.lua
+CombatStatus.xml
